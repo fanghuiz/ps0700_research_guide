@@ -1,0 +1,516 @@
+---
+title: "PS0700 - Research Exercise <br> Supplemental Guide"
+# date: "`r Sys.Date()`"
+date: "Created on: 2019-03-31 <br> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Updated on: `r Sys.Date()`"
+
+author: "Fanghui Zhao"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+    toc_depth: 3
+    css: readthedown_custom.css
+---
+
+
+```{r knitr_init, cache=FALSE, include=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+-----------------------------
+
+
+# Research Assignment Guide
+
+This is a very brief guide to help you get started on the research exercise assignment. If you are having trouble finding a suitable topic, I hope the sections on "Finding ideas" and "Formulating hypotheses" will help you to get started on the project; If you already have a topic in mind (awesome!), then you might find the latter sections more helpful. 
+
+<div class="alert alert-info">
+  This guide is subject to future updates
+  
+  * Check the "Updated on" date at the end of sidebar to see if there is any recent change.
+  * Check the [Changelog][CHangelog] section for details on the changes made.
+</div>
+
+## What you need to do
+
+* Formulate two sets of hypotheses using variables from one of the three datasets provided (or other data source, if you prefer)
+  * State *how* do you expect the IV to affect DV, and *why*
+  * Provide a citation of published article/book that relates to your idea
+* Discuss issues of measurement validity and reliability related to the variables used in your hypotheses
+* Choose the appropriate statistical procedure for testing each hypothesis
+* Use Stata to conduct the statistical test and interpret the test results
+* Evaluate the substantive implications of your statistical analysis
+  * What do they tell you about the way the political world works?
+* Discuss how do you think all of these variables are related in a causal sense
+* Discuss potential ways to improve on your analysis
+
+
+## Finding ideas for a research question
+
+If you have no ideas where to begin, try browsing through the topics available in the three datasets listed below, and see if there is anything that you find interesting or stood out to you. 
+
+Then think about whether this topic is a phenomenon that you want to explain, or do you think this subject/topic plays a role in causing/affecting other phenomenons?
+
+I want to explain this thing!  
+
+* Then "*this*" is your dependent variable $Y$. 
+* Try to come up with two factors that could bring a change to your $Y$ -- these will be your independent variables $X$.
+
+For example, say I want to explain voter turnout ($Y$). What could affect someone's decision to vote in an election?
+
+* Education $\rightarrow$ Turnout 
+* Interests in politics $\rightarrow$ Turnout
+
+I think this thing explains/predicts something else! 
+
+* Then "*this*" is your independent variable $X$. 
+* Try to come up with two different phenomenons that your $X$ could bring a change to -- these will be your dependent variables ($Y$).
+
+For example, say I think regime types (democracy or authoritarian) play an important role in shaping other outcomes. What phenomenon could be affected by regime types?
+
+* Regime types $\rightarrow$ Income inequality
+* Regime types $\rightarrow$ Gender inequality
+
+Ta-da! Two research questions.
+
+You might have noticed that this way of looking for research ideas is not very theoretically driven. It is fine for this exercise. However, I should emphasize that this does not mean "anything goes". Remember that you still need to provide a citation to existing work that relates to your idea. 
+
+
+## Formulating hypotheses
+
+After you have the questions you are interested in investigating, you will need to formulate two sets of testable hypotheses. 
+
+* State *how* the two variables are related: 
+  * Which variables is $X$, and which is $Y$?
+* Specify what is the direction of this relationship
+  * $X$ affects $Y$ positively or negatively?
+* Be clear what is the unit of analysis
+  * Individuals? Countries?
+* Make sure the hypothesis is empirically testable
+  * The null and the alternative hypothesis cannot both be true.
+  
+**Example 1:** 
+
+Hypothesized relationship: Job training program $\rightarrow$ Salary change
+
+<!-- Let $\mu$ be average salary change, $\text{treatment}$  -->
+
+$H_0$: There is no effect of participation in job training programs on the individual’s subsequent salary
+
+$$
+H_0: \mu_{\text{treatment}} - \mu_{\text{control}} = 0
+$$
+
+$H_A$: Participation in job training programs positively increases the individual’s subsequent salary
+
+$$
+H_A: \mu_{\text{treatment}} - \mu_{\text{control}} \ne 0
+$$
+
+
+<!-- **Example 2:**  -->
+
+<!-- Hypothesized relationship: Immigration status $\rightarrow$ Salary change -->
+
+<!-- $H_0$: Immigration status and the size of salary increases are statistically independent in the population -->
+
+<!-- $$ -->
+<!-- H_0: \mu_{\text{immigrant}} - \mu_{\text{non immigrant}} = 0 -->
+<!-- $$ -->
+
+<!-- $H_A$: Immigrants are less likely to register big salary increases than non-immigrants -->
+
+<!-- $$ -->
+<!-- H_A: \mu_{\text{immigrant}} - \mu_{\text{non immigrant}} \ne 0 -->
+<!-- $$ -->
+
+
+**Example 2:** 
+
+Hypothesized relationship: Years of education $\rightarrow$ Salary
+
+$$
+\text{Salary} = \alpha + \beta_0 \cdot \text{Years of education} + \epsilon
+$$
+
+$H_0$: Individuals' years of education has no effect on their current salary level
+
+$$
+H_0: \beta_0 = 0
+$$
+
+$H_A$: Individuals' years of education is positively associated with their current salary level
+
+$$
+H_A: \beta_0 \ne 0
+$$
+
+
+## Operationalizing variables
+
+Find the variables in respective dataset that you want to use to measure the concepts in your hypotheses.
+
+Make sure you know *how* the variable is measured.
+
+* What is the unit of observation (e.g. individual or aggregate)? 
+    * Be sure it corresponds to the units of analysis proposed in your hypothesis. Otherwise, you will be committing **ecological fallacy**, or the reverse **individualistic fallacy**.
+* If it is measured using survey items, what is the question wording, and what are the response options?
+* If using an index (created by your or already created in the dataset):
+    * What individual items are used in creating the index?
+    * How is the index/score created? Mean value of all items? Or sum? Or standardized score? Or something else?
+* If using aggregate level data (e.g. country-level characteristics in Democracy Cross-national dataset), what is the original data source? Is it from other organizations or agencies, or from previously published papers?
+    * For Norris' Democracy Cross-national dataset, see the code book (variable description or the last few pages) for the various original data sources.
+    * e.g. `Export2006` is data on exports from World Bank; `frac_eth` is a measure of ethnic fractionalization based on Alesina (2003).
+
+
+You will need these information 1) to decide if your variables need any further processing (e.g. recoding, creating different categories), and 2) to evaluate reliability and validity issues in your measurement.
+
+Also pay attention to the **levels of measurement**: How your variables are measured (categorical or continuous) will determine which is the appropriate statistical procedures to use (see next section for more). 
+
+
+## Testing hypotheses
+
+Depending on the types of variables used in your hypothesis, select the appropriate statistical test.
+
+| Dependent Variable \\ Independent Variable 	| IV = Nominal or Ordinal 	| IV = Interval or Ratio 	|
+|-------------------------------------------	|------------------------	|--------------------------------------------------------------------	|
+| **DV = Nominal or Ordinal** 	| Cross-tabulation 	| Collapse continuous IV into appropriate categories, <br> then use Cross-tabulation^[Logistic regression is the proper procedure in this case, but since we did not cover it for this course, we are using this approach as a substitute.] 	|
+| **DV = Interval or Ratio** 	| T-test 	| Regression 	|
+
+
+
+## Interpreting test results
+
+Things to look out for when interpreting Stata outputs
+
+* Direction of relationship
+* Is the relationship statistically significant? What is the significance level?
+* Strength of relationship
+* What does the statistical results mean substantively?
+
+
+<!-- # Example -->
+
+
+
+-----------------------------
+
+# Datasets Guide: Topics and Categories
+
+
+## American National Election Studies (ANES) 2016
+
+To look for specific variable names as they appear in the dataset, you can either 1) open the document called ANES variable list, do a keyword search, or 2) use [one of these utility tools][Other useful tools to explore ANES].
+
+
+```{r eval=FALSE, include=FALSE}
+Egalitarianism
+
+* `V162243` to `V162246`
+* 4 items, take average
+
+Racial resentment scale / Symbolic racism
+
+* `V162211` to `V162214`
+* 4 items, take average
+
+Political efficacy
+
+* `V162215` to `V162218`
+* 4 items, take average
+
+Moral traditionalism
+
+* `V162207` to `V162210`
+* 4 items, take average
+
+Authoritarianism (child rearing scale)
+
+* `V162239` to `V162242`
+* 4 items, take average
+
+<!-- TIPI (Ten Item Personality Inventory), a brief measurement of the "Big Five" personality traits -->
+
+
+Stereotypes about different race and religious groups
+
+* `V162345` to `V162356`
+* There are different ways to use these items, for example:
+  * Look at how individuals rate one group on one stereotype in isolation (e.g. whether they perceive this group as peaceful or violent).
+  * Look at how individuals rate different groups on the same stereotype (e.g. whether they perceive one group as more violent than another group).
+
+Sexism scale
+
+* Modern sexism: `V162231x`, `V162232`, `V162233`
+  * 3 items, take average
+* Gender resentment scale (I think this set of questions is newly developed, might not have too many references on this): `V161507` to `V161510`
+  * 4 items, take average
+
+
+Political knowledge
+
+* `V162072` to `V162076b`
+* 5 items, take sum
+* 4 of the questions are same, but are asked in different format to a random subset of the respondents (e.g. `V162073` and `V162073a`). For these 4 questions, create a new variable by combining the two different versions, then take the sum of all 5 items.
+
+Trust in government
+
+* `V161215` to `V161218`
+* 4 items, take average
+```
+
+### Partisanship and attitudes towards parties
+
+* Feelings about parties
+* Party identification
+* Closeness to parties
+* Party performance
+* Role of parties
+
+### Attitudes towards candidate and incumbent
+
+Affective attitudes and evaluations
+
+* Feeling thermometers
+* Candidate evaluations
+* Traits of president, candidates
+* Affect toward President, candidates
+* Evaluation of Congressional candidates
+
+Performance evaluations
+
+* Performance of current president
+* Retrospective evaluations
+* Other government performance
+* Candidate performance
+* Congressional candidate performance
+ 
+
+### Issues
+
+* General issues (most important problems, country on the right track)
+* Social welfare issues (e.g. healthcare, jobs, income)
+* Racial policy issues
+* Economic issues
+* Foreign relations
+* Social issues (e.g. abortion, gun control, immigration)
+* Environment
+* Federal spending 
+
+### Ideology and values
+
+* Liberal/Conservative
+* Religious values
+* Moral traditionalism `V162207` to `V162210`
+* Egalitarianism `V162243` to `V162246`
+* Racial resentment `V162211` to `V162214`
+* Social trust 
+* Authoritarianism (child rearing scale) `V162239` to `V162242`
+* Modern sexism: `V162231x`, `V162232`, `V162233`
+ 
+### System support
+
+General attitudes toward the political system, the nation, or the government.
+
+* Trust in government `V161215` to `V161218`
+* Power of the federal government
+* Political efficacy `V162215` to `V162218`
+* Government responsiveness
+* Patriotism
+* Feeling thermometers to different branches of government
+
+
+### Political participation and mobilization
+
+Civic participation
+
+* Involvement in community
+* Attitudes towards voting (duty or choice)
+
+Engagement and information
+
+  * Interest
+  * Discuss politics
+  * Political knowledge `V162072` to `V162076b`
+
+Campaign activity
+
+  * Respondent’s campaign activity
+  * Campaign contact/solicitation
+
+Registration, turnout, vote choice
+
+  * Previous Presidential election
+  * Vote intention (pre-election)
+  * Turnout & registration
+  * Vote choice
+  * State primary/caucus 
+ 
+### Media
+
+Use of news media, such as television, the Internet, newspapers, and radio. 
+
+### Social groups
+
+* Feeling thermometers to various groups
+* Group identification and closeness
+* Group stereotypes `V162345` to `V162356`
+
+
+### Socio-demographic data
+
+* Education
+* Employment status
+* Religious identification
+* Race/ethnicity
+* Age
+* Mobility
+* Income
+* Social class
+* Other personal and demographic data (labor union, home tenure, marital status, etc.) 
+
+
+### Other useful tools to explore ANES
+
+Useful tools to explore variables in ANES dataset based on categories
+
+* [SDA utility from UC Berkeley](http://sda.berkeley.edu/sdaweb/analysis/?dataset=nes2016)
+  * Navigate the categories to explore which variables are available, and which ones are measuring similar concepts. Variable name for each question is also given, so you can find the corresponding variable in the dataset. This is useful when you are not very familiar with the ANES data, and not sure exactly what data are available.
+* [ANES continuity guide](http://electionstudies.org/resources/anes-continuity-guide/)
+  * Note: not all questions are available in the 2016 dataset, check the key. If the key is shaded for year 2016, then it is available. Mouse over to see the variable name, and use that to locate the variable you want in the dataset.
+
+
+-----------------------------
+
+
+## Democracy Cross-national Dataset (Pippa Norris)
+
+The following categories are taken from the table of content on Norris' code book. I rearranged the orders to group the similar categories together, for ease of search. To find the variables available in each category, open the code book and do a keyword search for the category name, e.g. "Decentralization", or refer to the table of content to look for the corresponding page numbers ("Decentralization" on p.23).
+
+Measures of democracy:
+
+* Standardized Democracy Indices
+* Types of Regimes by Freedom House
+* Democracy and Dictatorship Classification
+* Polity Classifications
+
+Institution characteristics:
+
+* Typology of Executives
+* Decentralization
+* Corruption Perception Index
+* Worldwide Governance Indicators (World Bank)
+* Classifications of Ethnic Pluralism
+
+About elections:
+
+* Classification of Electoral System
+* Gender Political Representation
+* Turnout
+* Electoral Integrity
+* IDEA Political Finance Database
+* Database of Political Institutions (World Bank)
+
+
+Human rights and development indicators:
+
+* Human Rights
+* UNDP Human Development Indicators
+* World Bank Development Indicators
+
+Media 
+
+* Media Freedom
+* Media Access
+* Media ownership
+* Cultural export
+
+Social, economic, environmental variables:
+
+* Globalization Index and Cultural Trade
+* Aid
+* Religion Variables
+* World Social, Economic and Environmental Variables from Earlier Years
+
+Aggregate survey data
+
+* World Values Survey (aggregated value by nation)
+
+-----------------------------
+
+## World Value Survey (WVS) Wave 6 (2010-2012)
+
+Here is a selected subset of WVS variables that (I think) are more directly related to politics. There are many more variables in the WVS. Feel free to explore more. 
+
+I've indicated some of the variable names as they appear in the dataset, and many other I have not. You can find the corresponding variable name by search for the category name in the WVS code book (not the questionnaire!).
+
+
+### Politics
+
+* Political action
+* Political system (which type is good/bad)
+* Aims of country (what goals are most important)
+* Interest in politics
+* Protecting environment vs. Economic growth
+* Idelogy (left/right) `V95`
+* Views on various issues `V96` to `V100`
+* Democracy (what are the essential characteristics) `V131` to `V139`
+* Information source
+* Vote in elections
+* Perceptions of electoral integrity`V228A` to `V228I`
+* National identity `V211` to `V216`
+
+### Society
+
+* Confidence (in various institutions) `V108` to `V126`
+* Membership in various groups and organizations `V25` to `V35`
+* Tolerance towards minorities (groups of people you would not like to be neighbors with) `V36` to `V44`
+* Trust: `V102` to `V107`
+* Security in neighborhood `V170` to `V178`
+* Views on science `V192` to `V197`
+
+
+### Family and Work
+
+* When jobs are scarce `V45`, `V46`
+* Views on gender role/women and work `V47` to `V54`
+
+
+### Religions and morals
+
+* Various questions on religion `V144` to `V156`
+* Justifiable (are various kinds of actions justifiable) `V198` to `V210`
+
+
+### Special indexes
+
+Materialist/Post-materialist index (a.k.a. Inglehart Index, based on research by Ronald Inglehart).
+
+* `Y001`: 12 item summary index, created based on questions `V60` to `V65`
+* `Y002`: 4 item summary index, created based on questions `V62` and `V63`
+
+Autonomy index `Y003`
+
+* Important qualities children should learn
+* Created from `V12` to `V22`
+
+
+
+-----------------------------
+
+# Changelog
+
+2019-04-01
+
+* Initial release.
