@@ -1461,14 +1461,23 @@ $(document).ready(function () {
     <div id="text-table-of-contents">
       <ul>
       <li><a href="#research-assignment-guide">Research Assignment Guide</a><ul>
-      <li><a href="#what-you-need-to-do">What you need to do</a></li>
+      <li><a href="#what-you-need-to-do-paper-outline">What you need to do (Paper outline)</a><ul>
+      <li><a href="#research-topic-and-theory">1. Research topic and theory</a></li>
+      <li><a href="#hypothesis-and-operationalization">2. Hypothesis and operationalization</a></li>
+      <li><a href="#analysis-and-interpretation">3. Analysis and interpretation</a></li>
+      <li><a href="#discussion-and-future-direction">4. Discussion and future direction</a></li>
+      </ul></li>
       <li><a href="#finding-ideas-for-a-research-question">Finding ideas for a research question</a></li>
       <li><a href="#formulating-hypotheses">Formulating hypotheses</a></li>
       <li><a href="#operationalizing-variables">Operationalizing variables</a></li>
-      <li><a href="#testing-hypotheses">Testing hypotheses</a></li>
+      <li><a href="#conducting-statistical-tests">Conducting statistical tests</a><ul>
+      <li><a href="#preparing-your-data-for-analysis">Preparing your data for analysis</a></li>
+      <li><a href="#describing-and-exploring-your-data">Describing and exploring your data</a></li>
+      <li><a href="#choosing-the-approriate-test">Choosing the approriate test</a></li>
       <li><a href="#interpreting-test-results">Interpreting test results</a></li>
       </ul></li>
-      <li><a href="#datasets-guide-topics-and-categories">Datasets Guide: Topics and Categories</a><ul>
+      </ul></li>
+      <li><a href="#datasets">Datasets Guide: Topics and Categories</a><ul>
       <li><a href="#american-national-election-studies-anes-2016">American National Election Studies (ANES) 2016</a><ul>
       <li><a href="#partisanship-and-attitudes-towards-parties">Partisanship and attitudes towards parties</a></li>
       <li><a href="#attitudes-towards-candidate-and-incumbent">Attitudes towards candidate and incumbent</a></li>
@@ -1507,28 +1516,71 @@ $(document).ready(function () {
 <li>Check the <a href="#changelog">Changelog</a> section for details on the changes made.</li>
 </ul>
 </div>
-<div id="what-you-need-to-do" class="section level2">
-<h2>What you need to do</h2>
+<div id="what-you-need-to-do-paper-outline" class="section level2">
+<h2>What you need to do (Paper outline)</h2>
+<p>This is a general paper outline you can follow to make sure you address all the required elements in the assignment.</p>
+<div id="research-topic-and-theory" class="section level3">
+<h3>1. Research topic and theory</h3>
 <ul>
-<li>Formulate two sets of hypotheses using variables from one of the three datasets provided (or other data source, if you prefer)
+<li>Focus on a general topic and related to this general topic
 <ul>
-<li>State <em>how</em> do you expect the IV to affect DV, and <em>why</em></li>
-<li>Provide a citation of published article/book that relates to your idea</li>
+<li>Approach 1: Find a common <span class="math inline">\(Y\)</span>, and look for two potential <span class="math inline">\(X\)</span> that explains/predicts the same <span class="math inline">\(Y\)</span>
+<ul>
+<li><span class="math inline">\(X_1 \rightarrow Y\)</span></li>
+<li><span class="math inline">\(X_2 \rightarrow Y\)</span></li>
+</ul></li>
+<li>Approach 2: Find a common <span class="math inline">\(X\)</span>, and look for two potential <span class="math inline">\(Y\)</span> that could be affected by this <span class="math inline">\(X\)</span>
+<ul>
+<li><span class="math inline">\(X \rightarrow Y_1\)</span></li>
+<li><span class="math inline">\(X \rightarrow Y_2\)</span></li>
+</ul></li>
+</ul></li>
+<li>State your theory and expectations
+<ul>
+<li><em>how</em> do you expect the <span class="math inline">\(X\)</span> to affect <span class="math inline">\(Y\)</span>, and <em>why</em></li>
+</ul></li>
+<li>Provide a citation of published article/book that relates to your idea and supports your arguments on how and why your <span class="math inline">\(X\)</span> is related to <span class="math inline">\(Y\)</span>.</li>
+</ul>
+</div>
+<div id="hypothesis-and-operationalization" class="section level3">
+<h3>2. Hypothesis and operationalization</h3>
+<ul>
+<li>Formulate <strong>two</strong> sets of hypotheses</li>
+<li>Operationalize your hypotheses using <strong>three</strong> variables from one of the three datasets provided (or other data source, if you prefer)
+<ul>
+<li>Be clear about the direction of the relationship</li>
 </ul></li>
 <li>Discuss issues of measurement validity and reliability related to the variables used in your hypotheses</li>
-<li>Choose the appropriate statistical procedure for testing each hypothesis</li>
+</ul>
+</div>
+<div id="analysis-and-interpretation" class="section level3">
+<h3>3. Analysis and interpretation</h3>
+<ul>
+<li>Of the three statistical procedures we learnt in class, choose the appropriate one to test each of your hypothesis
+<ul>
+<li>t-test</li>
+<li>cross-tabulation and chi-square test</li>
+<li>regression</li>
+</ul></li>
 <li>Use Stata to conduct the statistical test and interpret the test results</li>
 <li>Evaluate the substantive implications of your statistical analysis
 <ul>
+<li>Are the relationships you observe substantively/practically important?</li>
 <li>What do they tell you about the way the political world works?</li>
 </ul></li>
-<li>Discuss how do you think all of these variables are related in a causal sense</li>
-<li>Discuss potential ways to improve on your analysis</li>
 </ul>
+</div>
+<div id="discussion-and-future-direction" class="section level3">
+<h3>4. Discussion and future direction</h3>
+<ul>
+<li>Discuss how do you think all of these variables are related in a causal sense</li>
+<li>Discuss potential ways to improve on your analysis in future work</li>
+</ul>
+</div>
 </div>
 <div id="finding-ideas-for-a-research-question" class="section level2">
 <h2>Finding ideas for a research question</h2>
-<p>If you have no ideas where to begin, try browsing through the topics available in the three datasets listed below, and see if there is anything that you find interesting or stood out to you.</p>
+<p>If you have no ideas where to begin, try browsing through the <a href="#datasets">topics available in the three datasets</a> listed below, and see if there is anything that you find interesting or stood out to you.</p>
 <p>Then think about whether this topic is a phenomenon that you want to explain, or do you think this subject/topic plays a role in causing/affecting other phenomenons?</p>
 <p>I want to explain this thing!</p>
 <ul>
@@ -1633,9 +1685,111 @@ H_A: \beta_0 \ne 0
 <p>You will need these information 1) to decide if your variables need any further processing (e.g. recoding, creating different categories), and 2) to evaluate reliability and validity issues in your measurement.</p>
 <p>Also pay attention to the <strong>levels of measurement</strong>: How your variables are measured (categorical or continuous) will determine which is the appropriate statistical procedures to use (see next section for more).</p>
 </div>
-<div id="testing-hypotheses" class="section level2">
-<h2>Testing hypotheses</h2>
-<p>Depending on the types of variables used in your hypothesis, select the appropriate statistical test.</p>
+<div id="conducting-statistical-tests" class="section level2">
+<h2>Conducting statistical tests</h2>
+<p>The following section provides you with a general outline of the steps involved to conduct statistical analysis, and things to consider along the way. For more concrete examples and the relevant Stata commands to use, see the sample analysis Stata do files provided during the recitation sessions.</p>
+<p>Now, I’m going to assume that you have already decided on the variables you will be using for the analysis.</p>
+<!-- * Data preparation -->
+<!-- * Exploratory analysis -->
+<!-- * Statistical analysis -->
+<div id="preparing-your-data-for-analysis" class="section level3">
+<h3>Preparing your data for analysis</h3>
+<ul>
+<li><span style="color:crimson"><strong>[Must do]</strong></span> Look at your selected variables using commands such as <code>codebook</code>, <code>tab</code>
+<ul>
+<li>See if it is a categorical variable (i.e. nominal or ordinal), or a continuous variable (i.e. interval or ratio)</li>
+</ul></li>
+<li><span style="color:lightsalmon"><strong>[Recommend]</strong></span> Create informative variable names, variable labels, and value labels (for categorical variables)</li>
+<li><span style="color:crimson"><strong>[Must do]</strong></span> Check for missing values in your selected variables
+<ul>
+<li>Use commands such as <code>codebook</code>, <code>tab</code> to see if there are missing values</li>
+<li>Cross reference respective dataset’s codebook if it’s not clear</li>
+<li>Recode the missing values to <code>.</code> if applicable</li>
+</ul></li>
+<li><span style="color:steelblue"><strong>[If applicable]</strong></span> Recode the values in the variable
+<ul>
+<li>Can use <code>recode</code> to present your variable in a more intuitive way, e.g. higher value corresponds to more free, or more happy, or more supports etc.</li>
+<li>Reverse code some variables if the original one is coded in a counter-intuitive way</li>
+</ul></li>
+<li><span style="color:steelblue"><strong>[If applicable]</strong></span> Create new variables, depending on your need
+<ul>
+<li>Create a new categorical variable from an existing continuous variable</li>
+<li>Create a new categorical variable from another categorical variable</li>
+<li>Create a scale/index based on multiple indicators</li>
+</ul></li>
+</ul>
+</div>
+<div id="describing-and-exploring-your-data" class="section level3">
+<h3>Describing and exploring your data</h3>
+<p><span style="color:teal"><strong>[Optional]</strong></span> You are not required to do the following. If you do decide to include any descriptive statistics or exploratory graphs in your paper, do not spend more than a short paragraph on it. The formal analysis part is more important.</p>
+<ul>
+<li>Check distribution shape, outliers, summary statistics</li>
+<li>Use summary statistics or exploeratory plots to see if there <em>seem</em> to be a relationship between your <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
+</ul>
+<p>Depending on your variable types, you should use different strategies for exploratory analysis:</p>
+<p>One variable distribution:</p>
+<table>
+<colgroup>
+<col width="12%"></col>
+<col width="50%"></col>
+<col width="37%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Non-graphical</th>
+<th>Graphical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Categorical (Nominal or Ordinal)</strong></td>
+<td>Frequency table <br> <code>tab</code></td>
+<td>Bar plot <br> <code>graph bar</code></td>
+</tr>
+<tr class="even">
+<td><strong>Continuous (Interval or Ratio)</strong></td>
+<td>Summary statistics <br> <code>summarize</code>, <code>tabstat</code></td>
+<td>Histogram <code>histogram</code> <br> Box plot <code>graph box</code></td>
+</tr>
+</tbody>
+</table>
+<p>Bi-variate relationship:</p>
+<table>
+<colgroup>
+<col width="12%"></col>
+<col width="50%"></col>
+<col width="37%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Non-graphical</th>
+<th>Graphical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Categorical x Categorical</strong></td>
+<td>Frequency table <br> <code>tab</code></td>
+<td>Bar plot <br> <code>catplot</code></td>
+</tr>
+<tr class="even">
+<td><strong>Categorical x Continuous</strong></td>
+<td>Summary statistics <br> <code>summarize</code>, <code>tabstat</code></td>
+<td>Histogram <code>histogram</code> <br> Box plot <code>graph box</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Continuous x Continuous</strong></td>
+<td>Correlation <br> <code>corr</code></td>
+<td>Scatter plot <br> <code>scatter</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="choosing-the-approriate-test" class="section level3">
+<h3>Choosing the approriate test</h3>
+<p><span style="color:crimson"><strong>[Must do]</strong></span> Depending on the types of variables used in your hypothesis, select the appropriate statistical test to determine if there is a statistically significant relationship between the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in your hypothesis.</p>
 <table>
 <colgroup>
 <col width="31%"></col>
@@ -1652,31 +1806,58 @@ H_A: \beta_0 \ne 0
 <tbody>
 <tr class="odd">
 <td><strong>DV = Nominal or Ordinal</strong></td>
-<td>Cross-tabulation</td>
-<td>Collapse continuous IV into appropriate categories, <br> then use Cross-tabulation<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></td>
+<td>Cross-tabulation <br> <code>tab</code></td>
+<td>Collapse continuous IV into appropriate categories, <br> then use Cross-tabulation<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <br> <code>tab</code></td>
 </tr>
 <tr class="even">
 <td><strong>DV = Interval or Ratio</strong></td>
-<td>T-test</td>
-<td>Regression</td>
+<td>(If IV has only two categories) T-test <br> <code>ttest</code></td>
+<td>Regression <br> <code>regress</code></td>
 </tr>
 </tbody>
 </table>
+<p>Special cases when you have a continuous dependent variable, and a categorical independent variable that has more than 2 categories:</p>
+<ul>
+<li>t-test only works when independent variabls has 2 groups/categories (i.e. dichotomous)
+<ul>
+<li>more than 2 categories would involve a technique called Analysis of Variance (ANOVA), which we would not cover for this course.</li>
+</ul></li>
+<li>What to do then? Make a new dichotomous variable
+<ul>
+<li>Approach 1: By collapsing the exisitng categories
+<ul>
+<li>e.g. if you have a variable on individuals’ highest level of educational degree (e.g. GED, high school diploma, Bachelors), you can create a College vs No college variable by grouping degrees below college (e.g. GED, HS diploma) into one group, and degress above college into one group (e.g. Bachelors, Masters).</li>
+</ul></li>
+<li>Approach 2: By lumping different groups together into a “super-group”
+<ul>
+<li>e.g. if you have a variable on a country’s geographical region that has many categories (e.g. Africa, Europe, Asia), you can create a dichotomous variable to represent (African countries vs Non-African countries) by putting all countries from “not Africa” categories into one big category.</li>
+</ul></li>
+<li>Approach 3: By removing observations from certain categories
+<ul>
+<li>e.g. if the variable on voter choice has 3 categories: Clinton, Trump, Johnson/Stein, you can create a dichotomous variable (Voted for Clinton vs Voted fr Trump) by excluding the Johnson/Stein voters from analysis (recode them to missing).</li>
+</ul></li>
+</ul></li>
+<li>Then, use this newly create dichotomous independent variable to conduct t-test</li>
+</ul>
 </div>
-<div id="interpreting-test-results" class="section level2">
-<h2>Interpreting test results</h2>
-<p>Things to look out for when interpreting Stata outputs</p>
+<div id="interpreting-test-results" class="section level3">
+<h3>Interpreting test results</h3>
+<p>Important things to look out for when interpreting Stata outputs</p>
 <ul>
 <li>Direction of relationship</li>
 <li>Is the relationship statistically significant? What is the significance level?</li>
 <li>Strength of relationship</li>
 <li>What does the statistical results mean substantively?</li>
 </ul>
+<div class="alert alert-info">
+<p>To be updated after lectures on how to interpret the different test results</p>
+</div>
 <!-- # Example -->
 <hr />
 </div>
 </div>
-<div id="datasets-guide-topics-and-categories" class="section level1">
+</div>
+<div id="datasets" class="section level1">
 <h1>Datasets Guide: Topics and Categories</h1>
 <div id="american-national-election-studies-anes-2016" class="section level2">
 <h2>American National Election Studies (ANES) 2016</h2>
@@ -1934,6 +2115,11 @@ H_A: \beta_0 \ne 0
 </div>
 <div id="changelog" class="section level1">
 <h1>Changelog</h1>
+<p>2019-04-05</p>
+<ul>
+<li>Edited “What you need to do” section</li>
+<li>Expanded on “Conducting statistical tests” section</li>
+</ul>
 <p>2019-04-01</p>
 <ul>
 <li>Initial release.</li>
@@ -1952,7 +2138,7 @@ H_A: \beta_0 \ne 0
 
 <div id="postamble" data-toggle="wy-nav-shift" class="status">
 <p class="author"><span class="glyphicon glyphicon-user"></span> Fanghui Zhao</p>
-<p class="date"><span class="glyphicon glyphicon-calendar"></span> Created on: 2019-03-31 <br>          Updated on: 2019-04-01</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> Created on: 2019-03-31 <br>          Updated on: 2019-04-05</p>
 </div>
 
 

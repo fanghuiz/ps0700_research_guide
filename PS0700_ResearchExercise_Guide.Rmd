@@ -39,26 +39,56 @@ This is a very brief guide to help you get started on the research exercise assi
   This guide is subject to future updates
   
   * Check the "Updated on" date at the end of sidebar to see if there is any recent change.
-  * Check the [Changelog][CHangelog] section for details on the changes made.
+  * Check the [Changelog][Changelog] section for details on the changes made.
 </div>
 
-## What you need to do
+## What you need to do (Paper outline)
 
-* Formulate two sets of hypotheses using variables from one of the three datasets provided (or other data source, if you prefer)
-  * State *how* do you expect the IV to affect DV, and *why*
-  * Provide a citation of published article/book that relates to your idea
+This is a general paper outline you can follow to make sure you address all the required elements in the assignment.
+
+### 1. Research topic and theory
+
+* Focus on a general topic and  related to this general topic
+  * Approach 1: Find a common $Y$, and look for two potential $X$ that explains/predicts the same $Y$
+    * $X_1 \rightarrow Y$
+    * $X_2 \rightarrow Y$
+  * Approach 2: Find a common $X$, and look for two potential $Y$ that could be affected by this $X$
+    * $X \rightarrow Y_1$
+    * $X \rightarrow Y_2$
+* State your theory and expectations
+  * *how* do you expect the $X$ to affect $Y$, and *why*
+* Provide a citation of published article/book that relates to your idea and supports your arguments on how and why your $X$ is related to $Y$.
+
+
+### 2. Hypothesis and operationalization
+
+* Formulate **two** sets of hypotheses 
+* Operationalize your hypotheses using **three** variables from one of the three datasets provided (or other data source, if you prefer)
+  * Be clear about the direction of the relationship
 * Discuss issues of measurement validity and reliability related to the variables used in your hypotheses
-* Choose the appropriate statistical procedure for testing each hypothesis
+
+
+### 3. Analysis and interpretation
+
+* Of the three statistical procedures we learnt in class, choose the appropriate one to test each of your hypothesis
+  * t-test
+  * cross-tabulation and chi-square test
+  * regression
 * Use Stata to conduct the statistical test and interpret the test results
 * Evaluate the substantive implications of your statistical analysis
+  * Are the relationships you observe substantively/practically important?
   * What do they tell you about the way the political world works?
+
+
+### 4. Discussion and future direction
+
 * Discuss how do you think all of these variables are related in a causal sense
-* Discuss potential ways to improve on your analysis
+* Discuss potential ways to improve on your analysis in future work
 
 
 ## Finding ideas for a research question
 
-If you have no ideas where to begin, try browsing through the topics available in the three datasets listed below, and see if there is anything that you find interesting or stood out to you. 
+If you have no ideas where to begin, try browsing through the [topics available in the three datasets](#datasets) listed below, and see if there is anything that you find interesting or stood out to you. 
 
 Then think about whether this topic is a phenomenon that you want to explain, or do you think this subject/topic plays a role in causing/affecting other phenomenons?
 
@@ -179,25 +209,100 @@ You will need these information 1) to decide if your variables need any further 
 Also pay attention to the **levels of measurement**: How your variables are measured (categorical or continuous) will determine which is the appropriate statistical procedures to use (see next section for more). 
 
 
-## Testing hypotheses
+## Conducting statistical tests
 
-Depending on the types of variables used in your hypothesis, select the appropriate statistical test.
+The following section provides you with a general outline of the steps involved to conduct statistical analysis, and things to consider along the way. For more concrete examples and the relevant Stata commands to use, see the sample analysis Stata do files provided during the recitation sessions.
+
+Now, I'm going to assume that you have already decided on the variables you will be using for the analysis. 
+
+<!-- * Data preparation -->
+<!-- * Exploratory analysis -->
+<!-- * Statistical analysis -->
+
+### Preparing your data for analysis
+
+* <span style="color:crimson">**[Must do]**</span> Look at your selected variables using commands such as `codebook`, `tab`
+  * See if it is a categorical variable (i.e. nominal or ordinal), or a continuous variable (i.e. interval or ratio)
+* <span style="color:lightsalmon">**[Recommend]**</span> Create informative variable names, variable labels, and value labels (for categorical variables)
+* <span style="color:crimson">**[Must do]**</span> Check for missing values in your selected variables
+  * Use commands such as `codebook`, `tab` to see if there are missing values
+  * Cross reference respective dataset's codebook if it's not clear
+  * Recode the missing values to `.` if applicable
+* <span style="color:steelblue">**[If applicable]**</span> Recode the values in the variable
+  * Can use `recode` to present your variable in a more intuitive way, e.g. higher value corresponds to more free, or more happy, or more supports etc.
+  * Reverse code some variables if the original one is coded in a counter-intuitive way
+* <span style="color:steelblue">**[If applicable]**</span> Create new variables, depending on your need
+  * Create a new categorical variable from an existing continuous variable
+  * Create a new categorical variable from another categorical variable
+  * Create a scale/index based on multiple indicators
+
+
+
+### Describing and exploring your data 
+
+<span style="color:teal">**[Optional]**</span> You are not required to do the following. If you do decide to include any descriptive statistics or exploratory graphs in your paper, do not spend more than a short paragraph on it. The formal analysis part is more important.
+
+* Check distribution shape, outliers, summary statistics
+* Use summary statistics or exploeratory plots to see if there *seem* to be a relationship between your $X$ and $Y$
+
+Depending on your variable types, you should use different strategies for exploratory analysis:
+
+One variable distribution:
+
+| 	| Non-graphical 	| Graphical	|
+|---	|------------	|  ---------	|
+| **Categorical (Nominal or Ordinal)** 	| Frequency table <br> `tab` 	| Bar plot <br> `graph bar` |
+| **Continuous (Interval or Ratio)** 	| Summary statistics <br> `summarize`, `tabstat` 	| Histogram `histogram` <br> Box plot `graph box` 	|
+
+
+
+Bi-variate relationship:
+
+| 	| Non-graphical 	| Graphical	|
+|---	|------------	|  ---------	|
+| **Categorical x Categorical** 	| Frequency table <br> `tab` 	| Bar plot <br> `catplot` |
+| **Categorical x Continuous** 	| Summary statistics <br> `summarize`, `tabstat` 	| Histogram `histogram` <br> Box plot `graph box` 	|
+| **Continuous x Continuous** 	| Correlation <br> `corr` 	| Scatter plot <br> `scatter` 	|
+
+
+
+### Choosing the approriate test
+
+<span style="color:crimson">**[Must do]**</span> Depending on the types of variables used in your hypothesis, select the appropriate statistical test to determine if there is a statistically significant relationship between the $X$ and $Y$ in your hypothesis. 
 
 | Dependent Variable \\ Independent Variable 	| IV = Nominal or Ordinal 	| IV = Interval or Ratio 	|
 |-------------------------------------------	|------------------------	|--------------------------------------------------------------------	|
-| **DV = Nominal or Ordinal** 	| Cross-tabulation 	| Collapse continuous IV into appropriate categories, <br> then use Cross-tabulation^[Logistic regression is the proper procedure in this case, but since we did not cover it for this course, we are using this approach as a substitute.] 	|
-| **DV = Interval or Ratio** 	| T-test 	| Regression 	|
+| **DV = Nominal or Ordinal** 	| Cross-tabulation <br> `tab` 	| Collapse continuous IV into appropriate categories, <br> then use Cross-tabulation^[Logistic regression is the proper procedure in this case, but since we did not cover it for this course, we are using this approach as a substitute.] <br> `tab` 	|
+| **DV = Interval or Ratio** 	| (If IV has only two categories) T-test <br> `ttest` 	| Regression <br> `regress` 	|
 
 
+Special cases when you have a continuous dependent variable, and a categorical independent variable that has more than 2 categories:
 
-## Interpreting test results
+* t-test only works when independent variabls has 2 groups/categories (i.e. dichotomous)
+  * more than 2 categories would involve a technique called Analysis of Variance (ANOVA), which we would not cover for this course.
+* What to do then? Make a new dichotomous variable
+  * Approach 1: By collapsing the exisitng categories
+    * e.g. if you have a variable on individuals' highest level of educational degree (e.g. GED, high school diploma, Bachelors), you can create a College vs No college variable  by grouping degrees below college (e.g. GED, HS diploma) into one group, and degress above college into one group (e.g. Bachelors, Masters). 
+  * Approach 2: By lumping different groups together into a "super-group"
+    * e.g. if you have a variable on a country's geographical region that has many categories (e.g. Africa, Europe, Asia), you can create a dichotomous variable to represent (African countries vs Non-African countries) by putting all countries from "not Africa" categories into one big category.
+  * Approach 3: By removing observations from certain categories
+    * e.g. if the variable on voter choice has 3 categories: Clinton, Trump, Johnson/Stein, you can create a dichotomous variable (Voted for Clinton vs Voted fr Trump) by excluding the Johnson/Stein voters from analysis (recode them to missing).
+* Then, use this newly create dichotomous independent variable to conduct t-test
 
-Things to look out for when interpreting Stata outputs
+
+### Interpreting test results
+
+Important things to look out for when interpreting Stata outputs
 
 * Direction of relationship
 * Is the relationship statistically significant? What is the significance level?
 * Strength of relationship
 * What does the statistical results mean substantively?
+
+
+<div class="alert alert-info">
+To be updated after lectures on how to interpret the different test results
+</div>
 
 
 <!-- # Example -->
@@ -206,7 +311,7 @@ Things to look out for when interpreting Stata outputs
 
 -----------------------------
 
-# Datasets Guide: Topics and Categories
+# Datasets Guide: Topics and Categories {#datasets}
 
 
 ## American National Election Studies (ANES) 2016
@@ -510,6 +615,11 @@ Autonomy index `Y003`
 -----------------------------
 
 # Changelog
+
+2019-04-05
+
+* Edited "What you need to do" section
+* Expanded on "Conducting statistical tests" section
 
 2019-04-01
 
